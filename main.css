@@ -24,6 +24,19 @@
     transition: background-color 0.7s;
 }
 
+.effect {
+
+	background-color: rgba(0,0,0,0);
+	position: absolute;
+
+	transition: background-color 1s;
+	-webkit-transition: background-color 1s;
+}
+
+.visible {
+	background-color: rgba(0,0,0,0.1);
+}
+
 .dark {
 	background-color: rgba(0,0,0, 0.5);
 }
@@ -107,14 +120,22 @@
 }
 
 .tile {
-	padding: 30px;
+	padding: 36px;
 	background-color: rgba(241, 93, 88, 0.8);
 	box-shadow: 2px 2px 2px #AE433F;
 	text-align: center;
 }
 
+.tile ~ .tile {
+	margin-top: 100px;
+}
+
+p {
+	margin:0px;
+}
+
 .tile p {
-	font-size: 32px;
+	font-size: 24px;
 	color: #FFFFFF;
 }
 
