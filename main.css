@@ -58,17 +58,16 @@
 	padding: 10px;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	height: 120px;
 }
 
 .fader p {
 	color: white;
-	float: right;
+	font-size: 16px;
 }
 
 
 .profile {
-	height: 100%;
+	width: 100%;
 	border: 1px solid white;
 }
 
@@ -141,6 +140,30 @@ p {
 
 .box p {
 	font-size: 24px;
+}
+
+#mailer {
+	margin-top: 200px;
+	width: 100%;
+	text-align: center;
+}
+
+#mailer input[type="email"] {
+	color: #C7F464;
+	width: 50%;
+	font-size: 32px;
+	border: none;
+	border-bottom: 2px solid #C7F464;
+	background-color: transparent;
+	box-shadow: 2px 2px 4px black;
+}
+
+#mailer input[type="email"]:invalid {
+	box-shadow: none;
+}
+
+#mailer input[type="email"]:valid {
+	box-shadow: none;
 }
 
 @media (max-width: 1200px) {

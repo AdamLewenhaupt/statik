@@ -34,7 +34,7 @@ $(document).ready(function () {
 
 		if(index == 2) {
 			clearInterval(intervalID);
-			$(".effekt").removeClass('visible').delay(700).queue(function(next) { $(this).remove(); next(); });
+			$(".effect").removeClass('visible').delay(700).queue(function(next) { $(this).remove(); next(); });
 
 			$filter.addClass("dark").removeClass("light");
 		} else if (index == 1) {
@@ -50,7 +50,10 @@ $(document).ready(function () {
 
 	$(".main").onepage_scroll({
 		loop: false,
-		beforeMove: fn
+		beforeMove: fn,
+		responsiveFallback: 1200
 	});
+
+	$(".main").moveTo(4);
 
 });
