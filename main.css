@@ -136,7 +136,7 @@ body {
 	border-radius: 10px;
 	font-size: 32px;
 	color: transparent;
-	box-shadow: 0px 0px 5px #456473;
+	box-shadow: 0px 0px 10px #456473 inset;
 	padding: 20px;
 	height: 0px;
 
@@ -170,13 +170,13 @@ body {
 
 .box {
 	border-radius: 10px;
-	color: #CACACA;
+	color: #F8C6BE;
 
 	text-align: center;
 	padding: 20px;
 
-	background-color: #698B9B;
-	box-shadow: 2px 2px 10px #304751;
+	background-color: rgba(0,0,0,0.6);
+	box-shadow: 0px 0px 50px 15px #F8C6BE;
 }
 
 .box p {
