@@ -1,56 +1,81 @@
-createAnimation = (sWidth, sHeight) ->
-  setInterval (->
-    size = 320
-    nx = Math.ceil sWidth / size
-    ny = Math.ceil sHeight / size
-    x = Math.floor(Math.random() * nx) * size
-    y = Math.floor(Math.random() * ny) * size
+text1 = "Vi tror att vill man synas på nätet idag#räcker det inte med en hemsida.##Det måste finnas en tanke bakom den."
+text2 = "Därför lär vi känna er och era kunder.##Först därefter börjar vi fundera#på hur er sida kan se ut."
+text3 = "För vi är inte nöjda med att göra en snygg sida.##Vi vill skapa er sida."
 
-    $effect = $('<div class=\'effect\' />').offset(
-      top: y
-      left: x).width(size).height(size).appendTo($('.background-filter'))
+writeAnimation = ($obj, textIndex, done) ->
+  switch textIndex
+    when 1
+      $obj.animate { left: 20 }, 1000, done
+    when 2
+      $obj.animate {right: 20}, 1000, done
+    when 3
+      $obj.animate {bottom: 20}, 1000, done
 
-    $effect.delay(1500).queue((next) ->
-      $(this).addClass 'visible'
-      next()
-      return
+write = ($obj, text, textIndex, done) ->
+  if text.length > 0
 
-    ).delay((Math.random() + 1) * 1000).queue((next) ->
-      $(this).removeClass 'visible'
-      next()
-      return
+    t = switch text[0]
+      when "#"
+        "<br/>"
+      else
+        text[0]
 
-    ).delay(1500).queue (next) ->
-      $(this).remove()
-      next()
-      return
+    $obj.append t
+    setTimeout (-> write $obj, text[1..], textIndex, done), ((Math.random() + 2) * 25)
+  else
+    $obj.addClass "writer-done"
+      .delay(800).queue (next)-> 
+        writeAnimation $obj, textIndex, done
+        next()
+    
 
-    return
 
-  ), Math.random() * 100
+makeStatic = ($obj) ->
+  $obj.height($obj.height())
+    .width($obj.width())
+
+setupPart2 = (sWidth, sHeight) ->
+  $("#no-press h1").addClass "no-press-done"
+  $("#no-press h1 span").css "color", "transparent"
+  $("#no-press h1").delay(600).queue(-> makeStatic($(this)).html("").dequeue()).animate { width: 0 }, 600
+    .queue(-> $(this).remove())
+  $(".text").css "height", sHeight * .6
+
+  done2 = -> write $("#writer-3"), text3, 3, (->)
+  done1 = -> write $("#writer-2"), text2, 2, done2
+
+  setTimeout (->write($("#writer-1"), text1, 1, done1)), 3000
+
 
 $(document).ready ->
   $.support.cors = true
   sWidth = $(window).width()
   sHeight = $(window).height()
-  # intervalID = createAnimation(sWidth, sHeight)
   $('.kram').height sHeight - 400
+    
 
   fn = (index) ->
     $filter = $('.background-filter')
 
     if index == 2
-      #clearInterval intervalID
-      $('.effect').removeClass('visible').delay(700).queue (next) ->
-        $(this).remove()
-        next()
-        return
+      $words = $('#no-press h1 span').css "color", "white"
+
+      $("#no-press").css "top", ""
+
+      $("#no-press h1").css(
+        "border-bottom": "4px solid #F7C6BD",
+        "border-left": "4px solid #F7C6BD",
+        "border-top": "4px solid #F7C6BD",
+        "border-right": "4px solid #F7C6BD",
+        "background-color": "rgba(0,0,0,0.6)")
+        .unbind 'click'
+        .click -> setupPart2(sWidth, sHeight)
+        .delay(1500).queue(-> $(this).addClass("highligth").dequeue() )
+
       $filter.addClass('dark').removeClass 'light'
 
     else if index == 1
-      #clearInterval intervalID
       $filter.removeClass 'dark'
-      # intervalID = createAnimation(sWidth, sHeight)
 
     else if index == 3
       $filter.addClass('light').removeClass 'dark'
