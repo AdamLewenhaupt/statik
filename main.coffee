@@ -1,15 +1,9 @@
-text1 = "Vi tror att vill man synas på nätet idag#räcker det inte med en hemsida.##Det måste finnas en tanke bakom den."
+text1 = "Vill man synas på nätet idag#räcker det inte bara med en hemsida.##Det måste finnas en tanke bakom den."
 text2 = "Därför lär vi känna er och era kunder.##Först därefter börjar vi fundera#på hur er sida kan se ut."
-text3 = "För vi är inte nöjda med att göra en snygg sida.##Vi vill skapa er sida."
+text3 = "För vi är inte nöjda med att göra en snygg sida.##Vi vill skapa * sida."
 
 writeAnimation = ($obj, textIndex, done) ->
-  switch textIndex
-    when 1
-      $obj.animate { left: 20 }, 1000, done
-    when 2
-      $obj.animate {right: 20}, 1000, done
-    when 3
-      $obj.animate {bottom: 20}, 1000, done
+  done()
 
 write = ($obj, text, textIndex, done) ->
   if text.length > 0
@@ -17,16 +11,17 @@ write = ($obj, text, textIndex, done) ->
     t = switch text[0]
       when "#"
         "<br/>"
+      when "*"
+        t = "<strong>ER</Strong>"
       else
         text[0]
 
     $obj.append t
     setTimeout (-> write $obj, text[1..], textIndex, done), ((Math.random() + 2) * 25)
   else
-    $obj.addClass "writer-done"
-      .delay(800).queue (next)-> 
-        writeAnimation $obj, textIndex, done
-        next()
+    writeAnimation $obj, textIndex, -> 
+      $obj.addClass "writer-done"
+      setTimeout done, 2000
     
 
 
@@ -41,7 +36,7 @@ setupPart2 = (sWidth, sHeight) ->
     .queue(-> $(this).remove())
   $(".text").css "height", sHeight * .6
 
-  done2 = -> write $("#writer-3"), text3, 3, (->)
+  done2 = -> write $("#writer-3"), text3, 3, -> $(".writer").css "color", "#94FFFC"
   done1 = -> write $("#writer-2"), text2, 2, done2
 
   setTimeout (->write($("#writer-1"), text1, 1, done1)), 3000
@@ -79,10 +74,12 @@ $(document).ready ->
 
     else if index == 3
       $filter.addClass('light').removeClass 'dark'
-      $('.depth').height(sHeight - 600).css('color', 'white')
+      height = sHeight - (256 + 180)
+      $('.depth').height(height).css('color', 'white')
+      $('.kram').height(height)
 
     else if index == 4
-      $filter.addClass('dark').removeClass 'light'
+      $(".background").css "background-image", "url(imgs/hello.png)"
     return
 
   $('.main').onepage_scroll
