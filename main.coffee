@@ -1,6 +1,6 @@
-text1 = "Vill man synas på nätet idag#räcker det inte bara med en hemsida.##Det måste finnas en tanke bakom den."
-text2 = "Därför lär vi känna er och era kunder.##Först därefter börjar vi fundera#på hur er sida kan se ut."
-text3 = "För vi är inte nöjda med att göra en snygg sida.##Vi vill skapa * sida."
+text1 = "Vill man synas på nätet idag räcker det# inte bara med en hemsida.##Vi tror att det måste finnas en tanke bakom den."
+text2 = "Därför skapar vi hemsidor genom att#först lära känna er och era kunder.##Sedan designar vi hemsidan så att vi kan#framföra ert budskap på ett smart och innovativt sätt."
+text3 = "För vi nöjer oss inte med att endast göra en snygg sida.#Vi vill skapa någonting unikt som man minns.##Vi vill helt enkelt skapa * sida."
 
 writeAnimation = ($obj, textIndex, done) ->
   done()
@@ -74,9 +74,16 @@ $(document).ready ->
 
     else if index == 3
       $filter.addClass('light').removeClass 'dark'
-      height = sHeight - (256 + 180)
-      $('.depth').height(height).css('color', 'white')
-      $('.kram').height(height)
+
+      if sWidth > 1000
+        height = sHeight - (256 + 180)
+        $('.depth').height(height).css('color', 'white')
+        $('.kram').height(height)
+      else
+        $('.kram').height sHeight * 0.3
+        $('.depth').height(sHeight * 0.3).css
+          'color': 'white',
+          'margin-top': '10%'
 
     else if index == 4
       $(".background").css "background-image", "url(imgs/hello.png)"
@@ -85,7 +92,6 @@ $(document).ready ->
   $('.main').onepage_scroll
     loop: false
     beforeMove: fn
-    responsiveFallback: 1200
 
   $('#test').click ->
     load = mail: $('#email').val()
