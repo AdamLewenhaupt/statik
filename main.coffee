@@ -2,9 +2,6 @@ text1 = "Vill man synas på nätet idag räcker det# inte bara med en hemsida.##
 text2 = "Därför skapar vi hemsidor genom att#först lära känna er och era kunder.##Sedan designar vi hemsidan så att vi kan#framföra ert budskap på ett smart och innovativt sätt."
 text3 = "För vi nöjer oss inte med att endast göra en snygg sida.#Vi vill skapa någonting unikt som man minns.##Vi vill helt enkelt skapa * sida."
 
-writeAnimation = ($obj, textIndex, done) ->
-  done()
-
 write = ($obj, text, textIndex, done) ->
   if text.length > 0
 
@@ -17,11 +14,10 @@ write = ($obj, text, textIndex, done) ->
         text[0]
 
     $obj.append t
-    setTimeout (-> write $obj, text[1..], textIndex, done), ((Math.random() + 2) * 25)
+    setTimeout (-> write $obj, text[1..], textIndex, done), ((Math.random() + 2) * 30)
   else
-    writeAnimation $obj, textIndex, -> 
-      $obj.addClass "writer-done"
-      setTimeout done, 2000
+    $obj.addClass "writer-done"
+    setTimeout done, 2000
     
 
 
@@ -30,9 +26,8 @@ makeStatic = ($obj) ->
     .width($obj.width())
 
 setupPart2 = (sWidth, sHeight) ->
-  $("#no-press h1").addClass "no-press-done"
   $("#no-press h1 span").css "color", "transparent"
-  $("#no-press h1").delay(600).queue(-> makeStatic($(this)).html("").dequeue()).animate { width: 0 }, 600
+  $("#no-press h1").delay(600).queue(-> makeStatic($(this)).html("").dequeue()).animate { width: 0, padding: 0 }, 600
     .queue(-> $(this).remove())
   $(".text").css "height", sHeight * .6
 
