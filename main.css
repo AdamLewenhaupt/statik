@@ -1,35 +1,35 @@
 @-webkit-keyframes rotating /* Safari and Chrome */ {
   from {
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+    -ms-transform: rotate(70deg);
+    -moz-transform: rotate(70deg);
+    -webkit-transform: rotate(70deg);
+    -o-transform: rotate(70deg);
+    transform: rotate(70deg);
   }
   to {
-    -ms-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
+    -ms-transform: rotate(420deg);
+    -moz-transform: rotate(420deg);
+    -webkit-transform: rotate(420deg);
+    -o-transform: rotate(420deg);
+    transform: rotate(420deg);
   }
 }
 
 @keyframes rotating {
 
   from {
-    -ms-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
+    -ms-transform: rotate(70deg);
+    -moz-transform: rotate(70deg);
+    -webkit-transform: rotate(70deg);
+    -o-transform: rotate(70deg);
+    transform: rotate(70deg);
   }
   to {
-    -ms-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
+    -ms-transform: rotate(420deg);
+    -moz-transform: rotate(420deg);
+    -webkit-transform: rotate(420deg);
+    -o-transform: rotate(420deg);
+    transform: rotate(420deg);
   }
 }
 
@@ -229,7 +229,7 @@ body {
 .writer {
 	width: auto;
 	padding: 20px;
-	font-size: 4vh;
+	font-size: 3.8vh;
 	color: #94FFFC;
 	display: block;
 	background-color: transparent;
@@ -290,13 +290,13 @@ body {
 }
 
 #hammer {
-	-webkit-animation: rotating 4s linear infinite;
-	-moz-animation: rotating 4s linear infinite;
-	-ms-animation: rotating 4s linear infinite;
-	-o-animation: rotating 4s linear infinite;
-	animation: rotating 4s linear infinite;
+	-webkit-animation: rotating 2s cubic-bezier(0.955, 0.155, 0.930, 0.535) infinite;
+	-moz-animation: rotating 2s cubic-bezier(0.955, 0.155, 0.930, 0.535) infinite;
+	-ms-animation: rotating 2s cubic-bezier(0.955, 0.155, 0.930, 0.535) infinite;
+	-o-animation: rotating 2s cubic-bezier(0.955, 0.155, 0.930, 0.535) infinite;
+	animation: rotating 2s cubic-bezier(0.955, 0.155, 0.930, 0.535) infinite;
 
-  transform-origin: 30% 70%;
+  transform-origin: 46% 85%;
   -webkit-transform-origin: 30% 70%;
 }
 
