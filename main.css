@@ -218,6 +218,15 @@ body {
 	transition: opacity 0.5s cubic-bezier(0.955, 0.155, 0.930, 0.535);
 }
 
+#screen {
+	width: 20vh;
+}
+
+.icon svg {
+	width: 100%;
+	height: auto;
+}
+
 #writer-wrapper {
 	top: 1%;
 	position: relative;
@@ -297,7 +306,7 @@ body {
 	animation: rotating 2s cubic-bezier(0.955, 0.155, 0.930, 0.535) infinite;
 
   transform-origin: 46% 85%;
-  -webkit-transform-origin: 30% 70%;
+  -webkit-transform-origin: 46% 85%;
 }
 
 @media (max-width: 1400px) {
